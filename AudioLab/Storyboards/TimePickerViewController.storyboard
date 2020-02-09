@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yLJ-YX-A28">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Time Picker View Controller-->
+        <scene sceneID="lAe-hn-FAX">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="yLJ-YX-A28" customClass="TimePickerViewController" customModule="AudioLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XoM-un-Qdy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yke-de-60N">
+                                <rect key="frame" x="0.0" y="601" width="414" height="295"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EuO-EV-46d">
+                                        <rect key="frame" x="8" y="45" width="414" height="216"/>
+                                    </datePicker>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySb-7i-vov">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p07-A2-Vds">
+                                                <rect key="frame" x="369" y="7.5" width="37" height="30"/>
+                                                <state key="normal" title="Done"/>
+                                                <connections>
+                                                    <action selector="doneButtonTapped:" destination="yLJ-YX-A28" eventType="touchUpInside" id="wdw-hH-ohd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="p07-A2-Vds" secondAttribute="trailing" constant="8" id="2hH-NE-NRj"/>
+                                            <constraint firstItem="p07-A2-Vds" firstAttribute="centerY" secondItem="ySb-7i-vov" secondAttribute="centerY" id="4be-as-w3k"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="ySb-7i-vov" firstAttribute="top" secondItem="Yke-de-60N" secondAttribute="top" id="3wd-0c-hBY"/>
+                                    <constraint firstItem="EuO-EV-46d" firstAttribute="top" secondItem="Yke-de-60N" secondAttribute="top" constant="45" id="AuW-fF-1qe"/>
+                                    <constraint firstAttribute="trailing" secondItem="EuO-EV-46d" secondAttribute="trailing" constant="-8" id="CMV-3q-8Pn"/>
+                                    <constraint firstItem="EuO-EV-46d" firstAttribute="top" secondItem="ySb-7i-vov" secondAttribute="bottom" id="ZWg-Sc-UCb"/>
+                                    <constraint firstItem="ySb-7i-vov" firstAttribute="leading" secondItem="Yke-de-60N" secondAttribute="leading" id="fZg-Gu-cAS"/>
+                                    <constraint firstItem="EuO-EV-46d" firstAttribute="leading" secondItem="Yke-de-60N" secondAttribute="leading" constant="8" id="ksC-mc-YLr"/>
+                                    <constraint firstAttribute="trailing" secondItem="ySb-7i-vov" secondAttribute="trailing" id="kwz-pZ-tpo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.18527932363013699" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cY4-zD-te3" firstAttribute="trailing" secondItem="Yke-de-60N" secondAttribute="trailing" id="OWA-dL-JNL"/>
+                            <constraint firstItem="EuO-EV-46d" firstAttribute="bottom" secondItem="cY4-zD-te3" secondAttribute="bottom" id="cbo-Pt-O4b"/>
+                            <constraint firstAttribute="bottom" secondItem="Yke-de-60N" secondAttribute="bottom" id="nkN-Kz-U5O"/>
+                            <constraint firstItem="Yke-de-60N" firstAttribute="leading" secondItem="cY4-zD-te3" secondAttribute="leading" id="xVp-M6-PZI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cY4-zD-te3"/>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="EuO-EV-46d" id="cWU-Sc-tLO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7DC-OE-j2f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-110.14492753623189" y="-101.11607142857143"/>
+        </scene>
+    </scenes>
+</document>

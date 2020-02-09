@@ -10,6 +10,13 @@ import UIKit
 
 class SettingsTableViewCell: UITableViewCell {
 
+    //MARK: - Public types
+
+    struct ViewModel {
+        var title: String
+        var value: String
+    }
+
     //MARK: - Outlets
 
     @IBOutlet private(set) var titleLabel: UILabel!
@@ -17,8 +24,8 @@ class SettingsTableViewCell: UITableViewCell {
 
     //MARK: - Public
 
-    func configure(with title: String, value: String) {
-        titleLabel.text = title
-        valueLabel.text = value
+    func configure(with viewModel: ViewModel) {
+        titleLabel.text = viewModel.title
+        valueLabel.text = viewModel.value
     }
 }

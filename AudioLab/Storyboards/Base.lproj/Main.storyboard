@@ -66,7 +66,7 @@
         <!--settings-->
         <scene sceneID="len-gD-wkE">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="settings" storyboardName="SettingsViewController" referencedIdentifier="settings" id="DfY-JM-vTM" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="settings" storyboardName="SettingsTableViewController" referencedIdentifier="settings" id="DfY-JM-vTM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bGy-qA-CgW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="728" y="48"/>
