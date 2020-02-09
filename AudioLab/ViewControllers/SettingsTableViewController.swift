@@ -87,7 +87,7 @@ class SettingsTableViewController: UITableViewController {
     private func loadData() {
         rows = [Row(type: .sleepDuration,
                    title: "Sleep timer",
-                   value: displayedValue(for: settings.sleepDuration)),
+                   value: displayedValue(for: settings.sleepDurationInSeconds)),
                 Row(type: .alarmTime,
                    title: "Alarm",
                    value: self.settings.alarmTime)]
@@ -108,11 +108,11 @@ class SettingsTableViewController: UITableViewController {
 
     private func presentSleepDurationAlert() {
         let alert = UIAlertController(title: "Sleep Timer", message: nil, preferredStyle: .actionSheet)
-        let availableSleepDurations = [0, 1, 5, 10, 15, 20]
+        let availableSleepDurationsInSeconds = [0, 60, 5 * 60, 10 * 60, 15 * 60, 20 * 60]
 
-        availableSleepDurations.forEach { duration in
+        availableSleepDurationsInSeconds.forEach { duration in
             alert.addAction(UIAlertAction(title: displayedValue(for: duration), style: . default){ action in
-                self.settings.sleepDuration = duration
+                self.settings.sleepDurationInSeconds = duration
             })
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
@@ -131,7 +131,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     private func displayedValue(for sleepDuration: Int) -> String {
-        return sleepDuration > 0 ? "\(sleepDuration) min" : "off"
+        return sleepDuration > 0 ? "\(sleepDuration / 60) min" : "off"
     }
 
     private func startObservingNotifications() {

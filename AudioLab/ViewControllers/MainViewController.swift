@@ -25,13 +25,36 @@ class MainViewController: UIViewController {
     var state: State = .idle {
         didSet {
             previousState = oldValue
+            updateUI()
             didMove(to: state)
         }
     }
 
     //MARK: - Private properties
 
+    private lazy var player: AudioPlayer? = {
+        var audioPlayer = AudioPlayer(sound: .nature)
+        audioPlayer?.delegate = self
+        return audioPlayer
+    }()
     private var previousState: State = .idle
+    private var settings = Settings()
+    private var actionButtonTitle: String {
+        get {
+            return actionButton.title(for: .normal) ?? ""
+        }
+        set {
+            actionButton.setTitle(newValue, for: .normal)
+        }
+    }
+    private var statusLabelTitle: String {
+        get {
+            return statusLabel.text ?? ""
+        }
+        set {
+            statusLabel.text = newValue
+        }
+    }
 
     //MARK: - Outlets
 
@@ -43,7 +66,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupUI()
+        actionButton.clipsToBounds = true
+        actionButton.layer.cornerRadius = 5
+        updateUI()
     }
 
     //MARK: - Actions
@@ -57,13 +82,6 @@ class MainViewController: UIViewController {
     }
 
     //MARK: - Private methods
-
-    private func setupUI() {
-        actionButton.clipsToBounds = true
-        actionButton.layer.cornerRadius = 5
-        actionButton.setTitle("Play", for: .normal)
-        statusLabel.text = "Idle"
-    }
 
     private func moveToNextState() {
         switch state {
@@ -85,29 +103,61 @@ class MainViewController: UIViewController {
         }
     }
 
-    private func didMoveToIdleState() {
-        actionButton.setTitle("Play", for: .normal)
-        statusLabel.text = "Idle"
-    }
+    private func didMoveToIdleState() {}
 
     private func didMoveToPlayingState() {
-        actionButton.setTitle("Pause", for: .normal)
-        statusLabel.text = "Playing"
-    }
+        guard let player = player  else {
+            state = previousState
+            return
+        }
 
-    private func didMoveToRecordingState() {
-        actionButton.setTitle("Pause", for: .normal)
-        statusLabel.text = previousState == .playing ? "Playing" : "Recording"
+        if previousState == .idle {
+            player.play(duration: settings.sleepDurationInSeconds)
+        } else {
+            player.resume()
+        }
     }
 
     private func didMoveToPausedState() {
-        actionButton.setTitle("Play", for: .normal)
-        statusLabel.text = "Paused"
+        if previousState == .playing {
+            player?.pause()
+        }
     }
 
-    private func didMoveToAlarmState() {
-        actionButton.setTitle("Play", for: .normal)
-        statusLabel.text = "Alarm"
+    private func didMoveToRecordingState() {}
+
+    private func didMoveToAlarmState() {}
+
+    private func updateUI() {
+        switch state {
+        case .idle:
+            actionButtonTitle = "Play"
+            statusLabelTitle = "Idle"
+        case .playing:
+            actionButtonTitle = "Pause"
+            statusLabelTitle = "Playing"
+        case .paused where previousState == .playing:
+            actionButtonTitle = "Play"
+            statusLabelTitle = "Paused"
+        case .paused where previousState == .recording:
+            actionButtonTitle = "Record"
+            statusLabelTitle = "Paused"
+        case .recording:
+            actionButtonTitle = "Pause"
+            statusLabelTitle = "Recording"
+        case .alarm:
+            actionButtonTitle = "Play"
+            statusLabelTitle = "Alarm"
+        default:
+            break
+        }
     }
 }
 
+//MARK: - AudioPlayerDelegate
+
+extension MainViewController: AudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AudioPlayer) {
+        state = .recording
+    }
+}

@@ -16,7 +16,7 @@ class Settings {
 
     //MARK: - Private properties
 
-    private let defaultSleepDuration = 5
+    private let defaultSleepDurationInSeconds = 5 * 60
     private let defaultAlarmTime = "7:00 AM"
 
     private let sleepDurationKey = "audiolab.settings.sleepduration"
@@ -27,11 +27,11 @@ class Settings {
 
     //MARK: - Public properties
 
-    var sleepDuration: Int {
+    var sleepDurationInSeconds: Int {
         get {
             guard
                 let storedValue = userDefaults.value(forKey: sleepDurationKey) as? Int else {
-                return defaultSleepDuration
+                return defaultSleepDurationInSeconds
             }
             return storedValue
         }

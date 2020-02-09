@@ -14,6 +14,7 @@
 		A686E7BD23F015B800F50DC0 /* TimePickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A686E7BC23F015B800F50DC0 /* TimePickerViewController.storyboard */; };
 		A686E7BF23F0241900F50DC0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7AA23EFEAAC00F50DC0 /* SettingsTableViewController.swift */; };
 		A686E7C123F0318D00F50DC0 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7C023F0318D00F50DC0 /* UIViewController+Extensions.swift */; };
+		A686E7C523F0531000F50DC0 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7C423F0531000F50DC0 /* AudioPlayer.swift */; };
 		A6B0323E23EF38BA00E05C16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B0323D23EF38BA00E05C16 /* AppDelegate.swift */; };
 		A6B0324523EF38BA00E05C16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6B0324323EF38BA00E05C16 /* Main.storyboard */; };
 		A6B0324723EF38BC00E05C16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6B0324623EF38BC00E05C16 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		A686E7BA23F0157200F50DC0 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		A686E7BC23F015B800F50DC0 /* TimePickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimePickerViewController.storyboard; sourceTree = "<group>"; };
 		A686E7C023F0318D00F50DC0 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		A686E7C423F0531000F50DC0 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		A6B0323A23EF38BA00E05C16 /* AudioLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6B0323D23EF38BA00E05C16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6B0324423EF38BA00E05C16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,12 +59,12 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		A686E7AF23EFFD3600F50DC0 /* Model */ = {
+		A686E7AF23EFFD3600F50DC0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				A686E7B023EFFD4300F50DC0 /* Settings.swift */,
 			);
-			path = Model;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		A686E7BE23F01FD300F50DC0 /* Extensions */ = {
@@ -71,6 +73,14 @@
 				A686E7C023F0318D00F50DC0 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A686E7C323F052F200F50DC0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A686E7C423F0531000F50DC0 /* AudioPlayer.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		A6B0323123EF38BA00E05C16 = {
@@ -92,8 +102,9 @@
 		A6B0323C23EF38BA00E05C16 /* AudioLab */ = {
 			isa = PBXGroup;
 			children = (
+				A686E7C323F052F200F50DC0 /* Utilities */,
 				A686E7BE23F01FD300F50DC0 /* Extensions */,
-				A686E7AF23EFFD3600F50DC0 /* Model */,
+				A686E7AF23EFFD3600F50DC0 /* Settings */,
 				A686E7AC23EFEC9700F50DC0 /* Cells */,
 				A6B0325223EF3A8700E05C16 /* ViewControllers */,
 				A6B0325323EF3A9900E05C16 /* Storyboards */,
@@ -217,6 +228,7 @@
 				A6B0325623EF3C2B00E05C16 /* MainViewController.swift in Sources */,
 				A6B0323E23EF38BA00E05C16 /* AppDelegate.swift in Sources */,
 				A686E7BF23F0241900F50DC0 /* SettingsTableViewController.swift in Sources */,
+				A686E7C523F0531000F50DC0 /* AudioPlayer.swift in Sources */,
 				A686E7C123F0318D00F50DC0 /* UIViewController+Extensions.swift in Sources */,
 				A686E7BB23F0157200F50DC0 /* TimePickerViewController.swift in Sources */,
 				A686E7AE23EFECB100F50DC0 /* SettingsTableViewCell.swift in Sources */,
@@ -365,6 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VSZ685A5CJ;
 				INFOPLIST_FILE = "AudioLab/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -383,6 +396,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VSZ685A5CJ;
 				INFOPLIST_FILE = "AudioLab/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
