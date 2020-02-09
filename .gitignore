@@ -1,0 +1,50 @@
+# xcode
+
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+xcuserdata
+build/*
+DerivedData/
+
+# appcode
+.idea/*
+
+# osx
+
+.DS_Store
+profile
+
+# vscode
+.vscode/*
+
+# fastlane
+
+# fastlane specific
+fastlane/report.xml
+swiftlint.result.xml
+*TestSummaries.xml
+
+# deliver temporary files
+fastlane/Preview.html
+
+# snapshot generated screenshots
+fastlane/screenshots/**/*.png
+fastlane/screenshots/screenshots.html
+
+# scan temporary files
+fastlane/test_output
+
+# logs_collector
+logs_collector_derived_data.zip
+logs_collector_simulator.zip
+syslog.log
+
+# cobertura
+cobertura
+
+# Bundler
+.bundle
+
