@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A686E7A923EFE83800F50DC0 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A686E7A823EFE83800F50DC0 /* SettingsViewController.storyboard */; };
+		A686E7AB23EFEAAC00F50DC0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7AA23EFEAAC00F50DC0 /* SettingsTableViewController.swift */; };
+		A686E7AE23EFECB100F50DC0 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7AD23EFECB100F50DC0 /* SettingsTableViewCell.swift */; };
 		A6B0323E23EF38BA00E05C16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B0323D23EF38BA00E05C16 /* AppDelegate.swift */; };
 		A6B0324523EF38BA00E05C16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6B0324323EF38BA00E05C16 /* Main.storyboard */; };
 		A6B0324723EF38BC00E05C16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6B0324623EF38BC00E05C16 /* Assets.xcassets */; };
 		A6B0324A23EF38BC00E05C16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6B0324823EF38BC00E05C16 /* LaunchScreen.storyboard */; };
-		A6B0325623EF3C2B00E05C16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B0325523EF3C2B00E05C16 /* ViewController.swift */; };
+		A6B0325623EF3C2B00E05C16 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B0325523EF3C2B00E05C16 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A647E22123EFD65300FDD84A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A686E7A823EFE83800F50DC0 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
+		A686E7AA23EFEAAC00F50DC0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		A686E7AD23EFECB100F50DC0 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A6B0323A23EF38BA00E05C16 /* AudioLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6B0323D23EF38BA00E05C16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6B0324423EF38BA00E05C16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6B0324623EF38BC00E05C16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6B0324923EF38BC00E05C16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A6B0325523EF3C2B00E05C16 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A6B0325523EF3C2B00E05C16 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A686E7AC23EFEC9700F50DC0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A686E7AD23EFECB100F50DC0 /* SettingsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A6B0323123EF38BA00E05C16 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +68,7 @@
 		A6B0323C23EF38BA00E05C16 /* AudioLab */ = {
 			isa = PBXGroup;
 			children = (
+				A686E7AC23EFEC9700F50DC0 /* Cells */,
 				A6B0325223EF3A8700E05C16 /* ViewControllers */,
 				A6B0325323EF3A9900E05C16 /* Storyboards */,
 				A6B0325123EF3A4B00E05C16 /* Resources */,
@@ -74,7 +89,8 @@
 		A6B0325223EF3A8700E05C16 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A6B0325523EF3C2B00E05C16 /* ViewController.swift */,
+				A6B0325523EF3C2B00E05C16 /* MainViewController.swift */,
+				A686E7AA23EFEAAC00F50DC0 /* SettingsTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -84,6 +100,7 @@
 			children = (
 				A6B0324323EF38BA00E05C16 /* Main.storyboard */,
 				A6B0324823EF38BC00E05C16 /* LaunchScreen.storyboard */,
+				A686E7A823EFE83800F50DC0 /* SettingsViewController.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -157,6 +174,7 @@
 				A6B0324A23EF38BC00E05C16 /* LaunchScreen.storyboard in Resources */,
 				A6B0324723EF38BC00E05C16 /* Assets.xcassets in Resources */,
 				A6B0324523EF38BA00E05C16 /* Main.storyboard in Resources */,
+				A686E7A923EFE83800F50DC0 /* SettingsViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,8 +185,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6B0325623EF3C2B00E05C16 /* ViewController.swift in Sources */,
+				A6B0325623EF3C2B00E05C16 /* MainViewController.swift in Sources */,
 				A6B0323E23EF38BA00E05C16 /* AppDelegate.swift in Sources */,
+				A686E7AE23EFECB100F50DC0 /* SettingsTableViewCell.swift in Sources */,
+				A686E7AB23EFEAAC00F50DC0 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
