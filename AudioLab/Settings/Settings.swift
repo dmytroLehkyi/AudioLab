@@ -8,12 +8,6 @@
 
 import Foundation
 
-struct AlartmTime {
-    var hours = 0
-    var minutes = 0
-}
-
-
 extension Notification.Name {
     static let settingsChanged = Notification.Name("SettingsChanged")
 }

@@ -140,7 +140,7 @@ class MainViewController: UIViewController {
 
         if previousState == .idle {
             scheduleAlarm()
-            player.play(duration: 5 /*settings.sleepDurationInSeconds*/)
+            player.play(duration: settings.sleepDurationInSeconds)
 
             if recordingPermissions.authorizationStatus == .granted {
                 tmpRecorder?.record(to: FileManager.default.temporaryDocumentURL("tmp"))
@@ -153,6 +153,8 @@ class MainViewController: UIViewController {
     private func didMoveToPausedState() {
         if previousState == .playing {
             soundPlayer?.pause()
+        } else {
+            audioRecorder?.pause()
         }
     }
 
