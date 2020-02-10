@@ -13,12 +13,10 @@
 		A6585D8D23F1579900D3E758 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6585D8C23F1579900D3E758 /* Date+Extensions.swift */; };
 		A6585D8F23F157DF00D3E758 /* UserNotificationsPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6585D8E23F157DF00D3E758 /* UserNotificationsPermissions.swift */; };
 		A67888FA23F16ECA008B79F9 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67888F923F16ECA008B79F9 /* DateFormatter+Extensions.swift */; };
-		A686E7A923EFE83800F50DC0 /* SettingsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A686E7A823EFE83800F50DC0 /* SettingsTableViewController.storyboard */; };
 		A686E7AE23EFECB100F50DC0 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7AD23EFECB100F50DC0 /* SettingsTableViewCell.swift */; };
 		A686E7B123EFFD4300F50DC0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7B023EFFD4300F50DC0 /* Settings.swift */; };
 		A686E7BB23F0157200F50DC0 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7BA23F0157200F50DC0 /* TimePickerViewController.swift */; };
 		A686E7BD23F015B800F50DC0 /* TimePickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A686E7BC23F015B800F50DC0 /* TimePickerViewController.storyboard */; };
-		A686E7BF23F0241900F50DC0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7AA23EFEAAC00F50DC0 /* SettingsTableViewController.swift */; };
 		A686E7C123F0318D00F50DC0 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7C023F0318D00F50DC0 /* UIViewController+Extensions.swift */; };
 		A686E7C523F0531000F50DC0 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7C423F0531000F50DC0 /* AudioPlayer.swift */; };
 		A6B0323E23EF38BA00E05C16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B0323D23EF38BA00E05C16 /* AppDelegate.swift */; };
@@ -37,8 +35,6 @@
 		A6585D8C23F1579900D3E758 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		A6585D8E23F157DF00D3E758 /* UserNotificationsPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsPermissions.swift; sourceTree = "<group>"; };
 		A67888F923F16ECA008B79F9 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
-		A686E7A823EFE83800F50DC0 /* SettingsTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsTableViewController.storyboard; sourceTree = "<group>"; };
-		A686E7AA23EFEAAC00F50DC0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A686E7AD23EFECB100F50DC0 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A686E7B023EFFD4300F50DC0 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A686E7BA23F0157200F50DC0 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				A6B0325523EF3C2B00E05C16 /* MainViewController.swift */,
-				A686E7AA23EFEAAC00F50DC0 /* SettingsTableViewController.swift */,
 				A686E7BA23F0157200F50DC0 /* TimePickerViewController.swift */,
 			);
 			path = ViewControllers;
@@ -159,7 +154,6 @@
 			children = (
 				A6B0324323EF38BA00E05C16 /* Main.storyboard */,
 				A6B0324823EF38BC00E05C16 /* LaunchScreen.storyboard */,
-				A686E7A823EFE83800F50DC0 /* SettingsTableViewController.storyboard */,
 				A686E7BC23F015B800F50DC0 /* TimePickerViewController.storyboard */,
 			);
 			path = Storyboards;
@@ -235,7 +229,6 @@
 				A6B0324A23EF38BC00E05C16 /* LaunchScreen.storyboard in Resources */,
 				A6B0324723EF38BC00E05C16 /* Assets.xcassets in Resources */,
 				A6B0324523EF38BA00E05C16 /* Main.storyboard in Resources */,
-				A686E7A923EFE83800F50DC0 /* SettingsTableViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +243,6 @@
 				A6B0325623EF3C2B00E05C16 /* MainViewController.swift in Sources */,
 				A67888FA23F16ECA008B79F9 /* DateFormatter+Extensions.swift in Sources */,
 				A6B0323E23EF38BA00E05C16 /* AppDelegate.swift in Sources */,
-				A686E7BF23F0241900F50DC0 /* SettingsTableViewController.swift in Sources */,
 				A686E7C523F0531000F50DC0 /* AudioPlayer.swift in Sources */,
 				A6585D8F23F157DF00D3E758 /* UserNotificationsPermissions.swift in Sources */,
 				A6585D8D23F1579900D3E758 /* Date+Extensions.swift in Sources */,

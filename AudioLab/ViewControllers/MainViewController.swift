@@ -81,6 +81,8 @@ class MainViewController: UIViewController {
 
     @IBOutlet private(set) var statusLabel: UILabel!
     @IBOutlet private(set) var actionButton: UIButton!
+    @IBOutlet private(set) var sleepingTimerButton: UIButton!
+    @IBOutlet private(set) var alarmButton: UIButton!
 
     //MARK: - Life cycle
 
@@ -90,8 +92,9 @@ class MainViewController: UIViewController {
         actionButton.layer.cornerRadius = 5
         updateUI()
 
-        notificationsPermissions.requestAuthorization { _ in
-        }
+        loadDataFromSettings()
+
+        notificationsPermissions.requestAuthorization { _ in }
     }
 
     //MARK: - Actions
@@ -108,11 +111,24 @@ class MainViewController: UIViewController {
         }
     }
 
+    @IBAction func selectTimer(_ sender: Any) {
+        presentSleepDurationAlert()
+    }
+
+    @IBAction func selectAlarm(_ sender: Any) {
+        presentAlarmTimePicker()
+    }
+
     //MARK: - Private methods
+
+    private func loadDataFromSettings() {
+        sleepingTimerButton.setTitle(displayedValue(for: settings.sleepDurationInSeconds), for: .normal)
+        alarmButton.setTitle(settings.alarmTime, for: .normal)
+    }
 
     private func moveToNextState() {
         switch state {
-        case .idle: state = .playing
+        case .idle: (settings.sleepDurationInSeconds) > 0 ? (state = .playing) : (state = .recording)
         case .playing: state = .recording
         case .paused: state = previousState
         case .recording: state = .alarm
@@ -130,13 +146,16 @@ class MainViewController: UIViewController {
         }
     }
 
-    private func didMoveToIdleState() {}
+    private func didMoveToIdleState() {
+        enableSettingsSelection(true)
+    }
 
     private func didMoveToPlayingState() {
         guard let player = soundPlayer  else {
             state = previousState
             return
         }
+        enableSettingsSelection(false)
 
         if previousState == .idle {
             scheduleAlarm()
@@ -151,6 +170,7 @@ class MainViewController: UIViewController {
     }
 
     private func didMoveToPausedState() {
+        enableSettingsSelection(false)
         if previousState == .playing {
             soundPlayer?.pause()
         } else {
@@ -178,6 +198,37 @@ class MainViewController: UIViewController {
             self.state = .idle
         })
         present(alert, animated: true) { }
+    }
+
+    private func presentAlarmTimePicker() {
+        let vc = TimePickerViewController.loadFromStoryboard()
+
+        vc.configure(with: settings.alarmTime)
+        vc.onComplete = { [weak self] date in
+            self?.settings.alarmTime = date
+            self?.loadDataFromSettings()
+        }
+
+        present(vc, animated: true) 
+    }
+
+    private func presentSleepDurationAlert() {
+        let alert = UIAlertController(title: "Sleep Timer", message: nil, preferredStyle: .actionSheet)
+        let availableSleepDurationsInSeconds = [0, 60, 5 * 60, 10 * 60, 15 * 60, 20 * 60]
+
+        availableSleepDurationsInSeconds.forEach { duration in
+            alert.addAction(UIAlertAction(title: displayedValue(for: duration), style: . default){ action in
+                self.settings.sleepDurationInSeconds = duration
+                self.loadDataFromSettings()
+
+            })
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        present(alert, animated: true)
+    }
+
+    private func displayedValue(for sleepDuration: Int) -> String {
+        return sleepDuration > 0 ? "\(sleepDuration / 60) min" : "off"
     }
 
     private func updateUI() {
@@ -210,6 +261,11 @@ class MainViewController: UIViewController {
             return
         }
         notiifcationsManager.scheduleNotification(with: "Alert", at: alarmDate)
+    }
+
+    private func enableSettingsSelection(_ enable: Bool) {
+        sleepingTimerButton.isEnabled = enable
+        alarmButton.isEnabled = enable
     }
 }
 
