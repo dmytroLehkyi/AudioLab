@@ -99,6 +99,10 @@ class MainViewController: UIViewController {
         notificationsPermissions.requestAuthorization { _ in }
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     //MARK: - Actions
 
     @IBAction func actionButtonPressed(_ sender: Any) {
@@ -165,7 +169,7 @@ class MainViewController: UIViewController {
 
         if previousState == .idle {
             scheduleAlarm()
-            player.play(duration: 5)//settings.sleepDurationInSeconds)
+            player.play(duration: settings.sleepDurationInSeconds)
 
             if shouldRecordSleeping {
                 tmpRecorder?.record(to: FileManager.default.temporaryDocumentURL("tmp"))
@@ -231,7 +235,7 @@ class MainViewController: UIViewController {
 
             })
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true)
     }
 
