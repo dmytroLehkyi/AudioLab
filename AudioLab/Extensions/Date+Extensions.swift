@@ -17,4 +17,15 @@ extension Date {
         let components = Calendar.current.dateComponents([.hour, .minute], from: date)
         return Calendar.current.nextDate(after: Date(), matching: components, matchingPolicy: .nextTime)
     }
+
+    static func isCurrentTimeEqual(to time: String) -> Bool {
+        guard let timeToCompare = Date.nextDate(matching: time) else {
+            return false
+        }
+
+        let timeComponents = Calendar.current.dateComponents([.hour, .minute], from: timeToCompare)
+        let currentTimeComponents = Calendar.current.dateComponents([.hour, .minute], from: Date())
+
+        return currentTimeComponents.hour == timeComponents.hour && currentTimeComponents.minute == timeComponents.minute
+    }
 }

@@ -94,6 +94,7 @@ class MainViewController: UIViewController {
         updateUI()
 
         loadDataFromSettings()
+        startObservingNotifications()
 
         notificationsPermissions.requestAuthorization { _ in }
     }
@@ -278,6 +279,18 @@ class MainViewController: UIViewController {
 
     var shouldRecordSleeping: Bool {
         return (recordingPermissions.authorizationStatus == .granted) && settings.shouldRecordSleeping
+    }
+
+    private func startObservingNotifications() {
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(moveToForeground),
+                name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+
+    @objc func moveToForeground(notification: Notification) {
+        if Date.isCurrentTimeEqual(to: settings.alarmTime) && state != .idle {
+            state = .alarm
+        }
     }
 }
 
