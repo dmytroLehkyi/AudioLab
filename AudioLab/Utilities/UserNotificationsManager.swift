@@ -16,6 +16,7 @@ class UserNotificationsManager {
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
         let content = UNMutableNotificationContent()
         content.title = title
+        content.sound = UNNotificationSound(named: UNNotificationSoundName("sound.caf"))
 
         let identifier = UUID().uuidString
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)

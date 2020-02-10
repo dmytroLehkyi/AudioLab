@@ -25,6 +25,7 @@
 		A6B0324A23EF38BC00E05C16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6B0324823EF38BC00E05C16 /* LaunchScreen.storyboard */; };
 		A6B0325623EF3C2B00E05C16 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B0325523EF3C2B00E05C16 /* MainViewController.swift */; };
 		A6F0703123F18E7300CE0568 /* UserNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0703023F18E7300CE0568 /* UserNotificationsManager.swift */; };
+		A6F0703323F1A7BC00CE0568 /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = A6F0703223F1A7B900CE0568 /* sound.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		A6B0324923EF38BC00E05C16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6B0325523EF3C2B00E05C16 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A6F0703023F18E7300CE0568 /* UserNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManager.swift; sourceTree = "<group>"; };
+		A6F0703223F1A7B900CE0568 /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		A6B0325423EF3ABA00E05C16 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A6F0703223F1A7B900CE0568 /* sound.caf */,
 				A647E22123EFD65300FDD84A /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -227,6 +230,7 @@
 			files = (
 				A686E7BD23F015B800F50DC0 /* TimePickerViewController.storyboard in Resources */,
 				A6B0324A23EF38BC00E05C16 /* LaunchScreen.storyboard in Resources */,
+				A6F0703323F1A7BC00CE0568 /* sound.caf in Resources */,
 				A6B0324723EF38BC00E05C16 /* Assets.xcassets in Resources */,
 				A6B0324523EF38BA00E05C16 /* Main.storyboard in Resources */,
 			);

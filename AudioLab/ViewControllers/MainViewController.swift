@@ -83,6 +83,7 @@ class MainViewController: UIViewController {
     @IBOutlet private(set) var actionButton: UIButton!
     @IBOutlet private(set) var sleepingTimerButton: UIButton!
     @IBOutlet private(set) var alarmButton: UIButton!
+    @IBOutlet private(set) var recordSleepSwitch: UISwitch!
 
     //MARK: - Life cycle
 
@@ -119,17 +120,21 @@ class MainViewController: UIViewController {
         presentAlarmTimePicker()
     }
 
+    @IBAction func recordSleepToggle(_ sender: Any) {
+        settings.shouldRecordSleeping = recordSleepSwitch.isOn
+    }
     //MARK: - Private methods
 
     private func loadDataFromSettings() {
         sleepingTimerButton.setTitle(displayedValue(for: settings.sleepDurationInSeconds), for: .normal)
         alarmButton.setTitle(settings.alarmTime, for: .normal)
+        recordSleepSwitch.setOn(settings.shouldRecordSleeping, animated: false)
     }
 
     private func moveToNextState() {
         switch state {
         case .idle: (settings.sleepDurationInSeconds) > 0 ? (state = .playing) : (state = .recording)
-        case .playing: state = .recording
+        case .playing : state = .recording
         case .paused: state = previousState
         case .recording: state = .alarm
         case .alarm: state = .idle
@@ -159,9 +164,9 @@ class MainViewController: UIViewController {
 
         if previousState == .idle {
             scheduleAlarm()
-            player.play(duration: settings.sleepDurationInSeconds)
+            player.play(duration: 5)//settings.sleepDurationInSeconds)
 
-            if recordingPermissions.authorizationStatus == .granted {
+            if shouldRecordSleeping {
                 tmpRecorder?.record(to: FileManager.default.temporaryDocumentURL("tmp"))
             }
         } else {
@@ -179,11 +184,13 @@ class MainViewController: UIViewController {
     }
 
     private func didMoveToRecordingState() {
-        let fileManager = FileManager.default
-        fileManager.createSleepRecordingsFolderIfNeeded()
+        if settings.shouldRecordSleeping {
+            let fileManager = FileManager.default
+            fileManager.createSleepRecordingsFolderIfNeeded()
 
-        audioRecorder?.record(to: fileManager.generateSleepRecordingURL(), till: Date.nextDate(matching: settings.alarmTime))
-        tmpRecorder?.stop()
+            audioRecorder?.record(to: fileManager.generateSleepRecordingURL(), till: Date.nextDate(matching: settings.alarmTime))
+            tmpRecorder?.stop()
+        }
     }
 
     private func didMoveToAlarmState() {
@@ -266,6 +273,11 @@ class MainViewController: UIViewController {
     private func enableSettingsSelection(_ enable: Bool) {
         sleepingTimerButton.isEnabled = enable
         alarmButton.isEnabled = enable
+        recordSleepSwitch.isEnabled = enable
+    }
+
+    var shouldRecordSleeping: Bool {
+        return (recordingPermissions.authorizationStatus == .granted) && settings.shouldRecordSleeping
     }
 }
 

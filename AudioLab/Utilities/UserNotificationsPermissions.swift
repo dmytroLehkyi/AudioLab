@@ -17,7 +17,7 @@ class UserNotificationsPermissions: UserNotificationsPermissionsProviding {
     let userNotificationsCenter = UNUserNotificationCenter.current()
 
     func requestAuthorization(completionHandler: @escaping (Bool) -> Void) {
-        userNotificationsCenter.requestAuthorization(options: [.alert]) { (result, _) in
+        userNotificationsCenter.requestAuthorization(options: [.alert, .sound]) { (result, _) in
             completionHandler(result)
         }
     }

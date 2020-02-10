@@ -18,9 +18,11 @@ class Settings {
 
     private let defaultSleepDurationInSeconds = 5 * 60
     private let defaultAlarmTime = "7:00 AM"
+    private let defaultTurnOnRecordSleeping = true
 
     private let sleepDurationKey = "audiolab.settings.sleepduration"
     private let alarmTimeKey = "audiolab.settings.alarmtime"
+    private let shouldRecordSleepingKey = "audiolab.settings.sleeping"
 
     private let userDefaults: UserDefaults = .standard
     private let notificationCenter: NotificationCenter = .default
@@ -53,6 +55,21 @@ class Settings {
 
         set {
             userDefaults.set(newValue, forKey: alarmTimeKey)
+            notificationCenter.post(name: .settingsChanged, object: nil, userInfo: nil)
+        }
+    }
+
+    var shouldRecordSleeping: Bool {
+        get {
+            guard
+                let storedValue = userDefaults.value(forKey: shouldRecordSleepingKey) as? Bool else {
+                return defaultTurnOnRecordSleeping
+            }
+            return storedValue
+        }
+
+        set {
+            userDefaults.set(newValue, forKey: shouldRecordSleepingKey)
             notificationCenter.post(name: .settingsChanged, object: nil, userInfo: nil)
         }
     }
