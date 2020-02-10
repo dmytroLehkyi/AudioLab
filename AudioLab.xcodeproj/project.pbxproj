@@ -13,7 +13,6 @@
 		A6585D8D23F1579900D3E758 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6585D8C23F1579900D3E758 /* Date+Extensions.swift */; };
 		A6585D8F23F157DF00D3E758 /* UserNotificationsPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6585D8E23F157DF00D3E758 /* UserNotificationsPermissions.swift */; };
 		A67888FA23F16ECA008B79F9 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67888F923F16ECA008B79F9 /* DateFormatter+Extensions.swift */; };
-		A686E7AE23EFECB100F50DC0 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7AD23EFECB100F50DC0 /* SettingsTableViewCell.swift */; };
 		A686E7B123EFFD4300F50DC0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7B023EFFD4300F50DC0 /* Settings.swift */; };
 		A686E7BB23F0157200F50DC0 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7BA23F0157200F50DC0 /* TimePickerViewController.swift */; };
 		A686E7BD23F015B800F50DC0 /* TimePickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A686E7BC23F015B800F50DC0 /* TimePickerViewController.storyboard */; };
@@ -36,7 +35,6 @@
 		A6585D8C23F1579900D3E758 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		A6585D8E23F157DF00D3E758 /* UserNotificationsPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsPermissions.swift; sourceTree = "<group>"; };
 		A67888F923F16ECA008B79F9 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
-		A686E7AD23EFECB100F50DC0 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A686E7B023EFFD4300F50DC0 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A686E7BA23F0157200F50DC0 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		A686E7BC23F015B800F50DC0 /* TimePickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimePickerViewController.storyboard; sourceTree = "<group>"; };
@@ -63,14 +61,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A686E7AC23EFEC9700F50DC0 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				A686E7AD23EFECB100F50DC0 /* SettingsTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		A686E7AF23EFFD3600F50DC0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +114,6 @@
 				A686E7C323F052F200F50DC0 /* Utilities */,
 				A686E7BE23F01FD300F50DC0 /* Extensions */,
 				A686E7AF23EFFD3600F50DC0 /* Settings */,
-				A686E7AC23EFEC9700F50DC0 /* Cells */,
 				A6B0325223EF3A8700E05C16 /* ViewControllers */,
 				A6B0325323EF3A9900E05C16 /* Storyboards */,
 				A6B0325123EF3A4B00E05C16 /* Resources */,
@@ -255,7 +244,6 @@
 				A686E7BB23F0157200F50DC0 /* TimePickerViewController.swift in Sources */,
 				A6F0703123F18E7300CE0568 /* UserNotificationsManager.swift in Sources */,
 				A6585D8923F133F400D3E758 /* FileManager+Extensions.swift in Sources */,
-				A686E7AE23EFECB100F50DC0 /* SettingsTableViewCell.swift in Sources */,
 				A686E7B123EFFD4300F50DC0 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
