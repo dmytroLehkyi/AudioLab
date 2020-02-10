@@ -19,26 +19,20 @@ class TimePickerViewController: UIViewController {
     }
 
     @IBAction func doneButtonTapped(_ sender: Any) {
-        onComplete?(dateFormatter.string(from: datePicker.date))
+        onComplete?(DateFormatter.shortTimeFormatter.string(from: datePicker.date))
 
         dismiss(animated: true)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        datePicker.locale = Locale(identifier: "en_US_POSIX")
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        let date = dateFormatter.date(from: timeString) ?? Date()
+        let date = DateFormatter.shortTimeFormatter.date(from: timeString) ?? Date()
         datePicker.setDate(date, animated: false)
-    }
-
-    private var dateFormatter: DateFormatter {
-        let formater = DateFormatter()
-        formater.timeStyle = .short
-
-        return formater
     }
 }

@@ -9,6 +9,9 @@
 import UIKit
 import AVFoundation
 
+protocol AudioRecorderDelegate: class {
+    func audioRecorderDidFinishRecording(_ recorder: AudioRecorder)
+}
 
 class AudioRecorder: NSObject {
 
@@ -18,6 +21,9 @@ class AudioRecorder: NSObject {
                                 AVSampleRateKey: 12000,
                           AVNumberOfChannelsKey: 1,
                        AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
+    private var endDate: Date? = nil
+    private var timer: Timer? = nil
+    weak var delegate: AudioRecorderDelegate?
 
     func startObservingNotifications() {
         NotificationCenter.default.addObserver(self,
@@ -29,7 +35,7 @@ class AudioRecorder: NSObject {
         NotificationCenter.default.removeObserver(self)
     }
 
-    func record(to url: URL) {
+    func record(to url: URL, till endDate: Date? = nil) {
         recordingSession.requestRecordPermission { [weak self] allowed in
             guard allowed, let self = self else { return }
 
@@ -41,6 +47,11 @@ class AudioRecorder: NSObject {
                 recorder.delegate = self
                 self.audioRecorder = recorder
                 self.audioRecorder?.record()
+                if let secondsTillEnd = endDate?.timeIntervalSince(Date()) {
+                    self.timer = Timer.scheduledTimer(withTimeInterval: secondsTillEnd, repeats: false) { [weak self] timer in
+                        self?.stop()
+                    }
+                }
             }
         }
     }
@@ -76,7 +87,10 @@ class AudioRecorder: NSObject {
     }
 }
 
+//MARK: - AVAudioRecorderDelegate
+
 extension AudioRecorder: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        delegate?.audioRecorderDidFinishRecording(self)
     }
 }

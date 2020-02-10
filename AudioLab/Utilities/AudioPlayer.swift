@@ -51,13 +51,16 @@ class AudioPlayer {
 
     //MARK: - Public
 
-    func play(duration: Int) {
+    func play(duration: Int? = nil) {
         guard !player.isPlaying else { return }
 
         startObservingNotifications()
         player.play()
-        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(duration), repeats: false) { [weak self] timer in
-            self?.stop()
+
+        if let duration = duration {
+            timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(duration), repeats: false) { [weak self] timer in
+                self?.stop()
+            }
         }
     }
 

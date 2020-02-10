@@ -32,13 +32,27 @@ class MainViewController: UIViewController {
 
     //MARK: - Private properties
 
-    private lazy var player: AudioPlayer? = {
+    private lazy var soundPlayer: AudioPlayer? = {
         var audioPlayer = AudioPlayer(sound: .nature)
         audioPlayer?.delegate = self
         return audioPlayer
     }()
+
+    private lazy var alarmPlayer: AudioPlayer? = {
+        var audioPlayer = AudioPlayer(sound: .alarm)
+        audioPlayer?.delegate = self
+        return audioPlayer
+    }()
+
     private let recordingPermissions: RecordingPermissionsProviding = RecordingPermissions()
-    private var recorder: AudioRecorder? = AudioRecorder()
+    private let notificationsPermissions: UserNotificationsPermissionsProviding = UserNotificationsPermissions()
+    private let notiifcationsManager = UserNotificationsManager()
+    private var needsToDisplayAlarm = false
+    private lazy var audioRecorder: AudioRecorder? = {
+        let recorder = AudioRecorder()
+        recorder.delegate = self
+        return recorder
+    }()
 
     // We need this temorary recorder to start recording simultaniously with audio playing.
     // It's workaround for issue when AVAudioRecorder cannot start recording when app is in background
@@ -72,10 +86,12 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         actionButton.clipsToBounds = true
         actionButton.layer.cornerRadius = 5
         updateUI()
+
+        notificationsPermissions.requestAuthorization { _ in
+        }
     }
 
     //MARK: - Actions
@@ -117,13 +133,14 @@ class MainViewController: UIViewController {
     private func didMoveToIdleState() {}
 
     private func didMoveToPlayingState() {
-        guard let player = player  else {
+        guard let player = soundPlayer  else {
             state = previousState
             return
         }
 
         if previousState == .idle {
-            player.play(duration: settings.sleepDurationInSeconds)
+            scheduleAlarm()
+            player.play(duration: 5 /*settings.sleepDurationInSeconds*/)
 
             if recordingPermissions.authorizationStatus == .granted {
                 tmpRecorder?.record(to: FileManager.default.temporaryDocumentURL("tmp"))
@@ -135,7 +152,7 @@ class MainViewController: UIViewController {
 
     private func didMoveToPausedState() {
         if previousState == .playing {
-            player?.pause()
+            soundPlayer?.pause()
         }
     }
 
@@ -143,16 +160,23 @@ class MainViewController: UIViewController {
         let fileManager = FileManager.default
         fileManager.createSleepRecordingsFolderIfNeeded()
 
-        recorder?.record(to: fileManager.generateSleepRecordingURL())
+        audioRecorder?.record(to: fileManager.generateSleepRecordingURL(), till: Date.nextDate(matching: settings.alarmTime))
         tmpRecorder?.stop()
-
-        //TODO: Remove when alarm will be implemented
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.recorder?.stop()
-        }
     }
 
-    private func didMoveToAlarmState() {}
+    private func didMoveToAlarmState() {
+        alarmPlayer?.play()
+        presentAlarm()
+    }
+
+    private func presentAlarm() {
+        let alert = UIAlertController(title: "Alarm", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Off", style: .default) { _ in
+            self.alarmPlayer?.stop()
+            self.state = .idle
+        })
+        present(alert, animated: true) { }
+    }
 
     private func updateUI() {
         switch state {
@@ -178,14 +202,31 @@ class MainViewController: UIViewController {
             break
         }
     }
+
+    private func scheduleAlarm() {
+        guard let alarmDate = Date.nextDate(matching: settings.alarmTime) else {
+            return
+        }
+        notiifcationsManager.scheduleNotification(with: "Alert", at: alarmDate)
+    }
 }
 
 //MARK: - AudioPlayerDelegate
 
 extension MainViewController: AudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AudioPlayer) {
-        if recordingPermissions.authorizationStatus == .granted {
+        if recordingPermissions.authorizationStatus == .granted && player === soundPlayer {
             state = .recording
+        }
+    }
+}
+
+//MARK: - AudioRecorderDelegate
+
+extension MainViewController: AudioRecorderDelegate {
+    func audioRecorderDidFinishRecording(_ recorder: AudioRecorder) {
+        if recorder === audioRecorder {
+            state = .alarm
         }
     }
 }

@@ -10,6 +10,9 @@
 		A624CD2723F07BB400DF8339 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A624CD2623F07BB400DF8339 /* AudioRecorder.swift */; };
 		A6585D8923F133F400D3E758 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6585D8823F133F400D3E758 /* FileManager+Extensions.swift */; };
 		A6585D8B23F147C600D3E758 /* RecordingPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6585D8A23F147C600D3E758 /* RecordingPermissions.swift */; };
+		A6585D8D23F1579900D3E758 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6585D8C23F1579900D3E758 /* Date+Extensions.swift */; };
+		A6585D8F23F157DF00D3E758 /* UserNotificationsPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6585D8E23F157DF00D3E758 /* UserNotificationsPermissions.swift */; };
+		A67888FA23F16ECA008B79F9 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67888F923F16ECA008B79F9 /* DateFormatter+Extensions.swift */; };
 		A686E7A923EFE83800F50DC0 /* SettingsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A686E7A823EFE83800F50DC0 /* SettingsTableViewController.storyboard */; };
 		A686E7AE23EFECB100F50DC0 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7AD23EFECB100F50DC0 /* SettingsTableViewCell.swift */; };
 		A686E7B123EFFD4300F50DC0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A686E7B023EFFD4300F50DC0 /* Settings.swift */; };
@@ -23,6 +26,7 @@
 		A6B0324723EF38BC00E05C16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6B0324623EF38BC00E05C16 /* Assets.xcassets */; };
 		A6B0324A23EF38BC00E05C16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6B0324823EF38BC00E05C16 /* LaunchScreen.storyboard */; };
 		A6B0325623EF3C2B00E05C16 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B0325523EF3C2B00E05C16 /* MainViewController.swift */; };
+		A6F0703123F18E7300CE0568 /* UserNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0703023F18E7300CE0568 /* UserNotificationsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,9 @@
 		A647E22123EFD65300FDD84A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6585D8823F133F400D3E758 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		A6585D8A23F147C600D3E758 /* RecordingPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingPermissions.swift; sourceTree = "<group>"; };
+		A6585D8C23F1579900D3E758 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A6585D8E23F157DF00D3E758 /* UserNotificationsPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsPermissions.swift; sourceTree = "<group>"; };
+		A67888F923F16ECA008B79F9 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		A686E7A823EFE83800F50DC0 /* SettingsTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsTableViewController.storyboard; sourceTree = "<group>"; };
 		A686E7AA23EFEAAC00F50DC0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A686E7AD23EFECB100F50DC0 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -44,6 +51,7 @@
 		A6B0324623EF38BC00E05C16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6B0324923EF38BC00E05C16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6B0325523EF3C2B00E05C16 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A6F0703023F18E7300CE0568 /* UserNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +86,8 @@
 			children = (
 				A686E7C023F0318D00F50DC0 /* UIViewController+Extensions.swift */,
 				A6585D8823F133F400D3E758 /* FileManager+Extensions.swift */,
+				A6585D8C23F1579900D3E758 /* Date+Extensions.swift */,
+				A67888F923F16ECA008B79F9 /* DateFormatter+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -88,6 +98,8 @@
 				A686E7C423F0531000F50DC0 /* AudioPlayer.swift */,
 				A624CD2623F07BB400DF8339 /* AudioRecorder.swift */,
 				A6585D8A23F147C600D3E758 /* RecordingPermissions.swift */,
+				A6585D8E23F157DF00D3E758 /* UserNotificationsPermissions.swift */,
+				A6F0703023F18E7300CE0568 /* UserNotificationsManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -236,12 +248,16 @@
 			files = (
 				A624CD2723F07BB400DF8339 /* AudioRecorder.swift in Sources */,
 				A6B0325623EF3C2B00E05C16 /* MainViewController.swift in Sources */,
+				A67888FA23F16ECA008B79F9 /* DateFormatter+Extensions.swift in Sources */,
 				A6B0323E23EF38BA00E05C16 /* AppDelegate.swift in Sources */,
 				A686E7BF23F0241900F50DC0 /* SettingsTableViewController.swift in Sources */,
 				A686E7C523F0531000F50DC0 /* AudioPlayer.swift in Sources */,
+				A6585D8F23F157DF00D3E758 /* UserNotificationsPermissions.swift in Sources */,
+				A6585D8D23F1579900D3E758 /* Date+Extensions.swift in Sources */,
 				A686E7C123F0318D00F50DC0 /* UIViewController+Extensions.swift in Sources */,
 				A6585D8B23F147C600D3E758 /* RecordingPermissions.swift in Sources */,
 				A686E7BB23F0157200F50DC0 /* TimePickerViewController.swift in Sources */,
+				A6F0703123F18E7300CE0568 /* UserNotificationsManager.swift in Sources */,
 				A6585D8923F133F400D3E758 /* FileManager+Extensions.swift in Sources */,
 				A686E7AE23EFECB100F50DC0 /* SettingsTableViewCell.swift in Sources */,
 				A686E7B123EFFD4300F50DC0 /* Settings.swift in Sources */,

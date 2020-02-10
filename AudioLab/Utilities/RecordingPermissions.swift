@@ -14,7 +14,6 @@ protocol RecordingPermissionsProviding {
     func requestAccess(completionHandler: @escaping (Bool) -> Void)
 }
 
-
 class RecordingPermissions: RecordingPermissionsProviding {
     private let recordingSession: AVAudioSession = AVAudioSession.sharedInstance()
 
