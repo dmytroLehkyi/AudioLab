@@ -47,5 +47,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need access to mic to record snoozing</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>

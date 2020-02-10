@@ -42,7 +42,7 @@ class AudioPlayer {
         do {
             player = try AVAudioPlayer(data: dataAsset.data)
             player.numberOfLoops = -1
-            try AVAudioSession.sharedInstance().setCategory(.playback)
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch _ {
             return nil
@@ -81,6 +81,9 @@ class AudioPlayer {
     }
 
     func stop() {
+        timer?.invalidate()
+        timer = nil
+
         player.stop()
         stopObservingNotifications()
         delegate?.audioPlayerDidFinishPlaying(self)

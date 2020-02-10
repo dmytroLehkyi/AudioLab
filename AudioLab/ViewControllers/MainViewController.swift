@@ -37,6 +37,13 @@ class MainViewController: UIViewController {
         audioPlayer?.delegate = self
         return audioPlayer
     }()
+    private let recordingPermissions: RecordingPermissionsProviding = RecordingPermissions()
+    private var recorder: AudioRecorder? = AudioRecorder()
+
+    // We need this temorary recorder to start recording simultaniously with audio playing.
+    // It's workaround for issue when AVAudioRecorder cannot start recording when app is in background
+    private var tmpRecorder: AudioRecorder? = AudioRecorder()
+
     private var previousState: State = .idle
     private var settings = Settings()
     private var actionButtonTitle: String {
@@ -77,7 +84,11 @@ class MainViewController: UIViewController {
         if [.recording, .playing].contains(state) {
             state = .paused
         } else {
-            moveToNextState()
+            recordingPermissions.requestAccess { [weak self] _ in
+                DispatchQueue.main.async {
+                    self?.moveToNextState()
+                }
+            }
         }
     }
 
@@ -113,6 +124,10 @@ class MainViewController: UIViewController {
 
         if previousState == .idle {
             player.play(duration: settings.sleepDurationInSeconds)
+
+            if recordingPermissions.authorizationStatus == .granted {
+                tmpRecorder?.record(to: FileManager.default.temporaryDocumentURL("tmp"))
+            }
         } else {
             player.resume()
         }
@@ -124,7 +139,18 @@ class MainViewController: UIViewController {
         }
     }
 
-    private func didMoveToRecordingState() {}
+    private func didMoveToRecordingState() {
+        let fileManager = FileManager.default
+        fileManager.createSleepRecordingsFolderIfNeeded()
+
+        recorder?.record(to: fileManager.generateSleepRecordingURL())
+        tmpRecorder?.stop()
+
+        //TODO: Remove when alarm will be implemented
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.recorder?.stop()
+        }
+    }
 
     private func didMoveToAlarmState() {}
 
@@ -158,6 +184,8 @@ class MainViewController: UIViewController {
 
 extension MainViewController: AudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AudioPlayer) {
-        state = .recording
+        if recordingPermissions.authorizationStatus == .granted {
+            state = .recording
+        }
     }
 }
